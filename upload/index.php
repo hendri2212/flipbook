@@ -31,19 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Move uploaded file and replace existing file (skripsi.pdf)
             if (move_uploaded_file($tempFile, $targetFile)) { ?>
                 <script>
-                    Swal.fire({
-                        icon: "success",
-                        title: "Oops...",
-                        text: "The file has been uploaded and renamed to skripsi.pdf",
-                    });
+                    alert("The file has been uploaded and renamed to skripsi.pdf")
                 </script>
             <?php } else { ?>
                 <script>
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Sorry, there was an error uploading your file",
-                    });
+                    alert("Sorry, there was an error uploading your file");
                 </script>
             <?php }
         }
@@ -61,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Upload PDF Document</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
         <div class="card mx-auto mt-5" style="width: 30rem;">
