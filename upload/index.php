@@ -1,7 +1,7 @@
 <?php
 // Set the target directory and file name
 $targetDir = "documents/";
-$targetFile = $targetDir . "skripsi.pdf";
+// $targetFile = $targetDir . "skripsi.pdf";
 $uploadOk = 1;
 
 // Check if form is submitted
@@ -28,10 +28,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Proceed if no errors and it's a PDF
         if ($uploadOk) {
+            // Create a unique file name with timestamp
+            $newFileName = "skripsi_" . time() . ".pdf";
+            $targetFile = $targetDir . $newFileName;
+
             // Move uploaded file and replace existing file (skripsi.pdf)
-            if (move_uploaded_file($tempFile, $targetFile)) { ?>
+            if (move_uploaded_file($tempFile, $targetFile)) {
+                // Save the new file name to a text file, overwriting the previous content
+                file_put_contents("../uploaded_files.txt", $newFileName);
+                ?>
                 <script>
                     alert("The file has been uploaded and renamed to skripsi.pdf")
+                    // Redirect or update the PDF viewer URL if necessary
+                    // For example:
+                    // window.location.href = "your_flipbook_page.php?pdf=" + "<?php //echo $newFileName; ?>";
                 </script>
             <?php } else { ?>
                 <script>

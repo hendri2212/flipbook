@@ -29,7 +29,9 @@
     jQuery(document).ready(function () {
       //uses source from online(make sure the file has CORS access enabled if used in cross-domain)
       // var pdf = 'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf';
-      var pdf = './upload/documents/skripsi.pdf';
+      var pdfFileName = "<?php echo trim(file_get_contents('uploaded_files.txt')); ?>"; // Read the file name
+      // var pdf = './upload/documents/skripsi.pdf';
+      var pdf = './upload/documents/' + pdfFileName; // Construct the full path to the PDF file
       var options = {
         height:2000,
         duration: 700,
